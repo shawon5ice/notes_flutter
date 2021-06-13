@@ -2,10 +2,10 @@
 
 A new Flutter application for taking notes.
 
-<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/no%20notes.jpg" alt="alt text" style="max-width:25%;">
-<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/add%20note.jpg" alt="alt text" style="max-width:25%;">
-<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/grid%20view.jpg" alt="alt text" style="max-width:25%;">
-<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/list%20view.jpg" alt="alt text" style="max-width:25%;">
+<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/no%20notes.jpg" alt="alt text" style="width:25%;height:25%;">
+<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/add%20note.jpg" alt="alt text" style="width:25%;height:25%;">
+<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/grid%20view.jpg" alt="alt text" style="width:25%;height:25%;">
+<img src="https://github.com/shawon5ice/notes/raw/master/screenshots/list%20view.jpg" alt="alt text" style="width:25%;height:25%;">
 
 ## Getting Started
 
