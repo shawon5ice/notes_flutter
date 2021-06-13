@@ -2,7 +2,7 @@
 
 A new Flutter application for taking notes.
 
-![alt text](https://github.com/shawon5ice/notes/blob/master/screenshots/no%20notes.jpg = 200x300)
+![alt text](https://github.com/shawon5ice/notes/blob/master/screenshots/no%20notes.jpg :height="300px" width="200px")
 ![alt text](https://github.com/shawon5ice/notes/blob/master/screenshots/add%20note.jpg = 200x300)
 ![alt text](https://github.com/shawon5ice/notes/blob/master/screenshots/grid%20view.jpg = 200x300)
 ![alt text](https://github.com/shawon5ice/notes/blob/master/screenshots/list%20view.jpg = 200x300)
