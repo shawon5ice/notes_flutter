@@ -70,7 +70,7 @@ class NoteListCardWidget extends StatelessWidget {
       color: color,
       child: Container(
         constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height * 0.15,
+            minHeight: MediaQuery.of(context).size.height * 0.11,
             minWidth: double.infinity),
         padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Stack(
