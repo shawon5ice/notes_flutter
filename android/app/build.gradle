@@ -28,7 +28,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.example.notes_flutter"
+    namespace "com.ssquare.notes_flutter"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
