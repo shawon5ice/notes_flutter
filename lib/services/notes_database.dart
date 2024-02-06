@@ -5,15 +5,15 @@ import 'package:notes/model/notes.dart';
 class NotesDatabase {
   static final NotesDatabase instance = NotesDatabase._init();
 
-  static Database _database;
+  static Database? _database;
 
   NotesDatabase._init();
 
   Future<Database> get database async {
-    if (_database != null) return _database;
+    if (_database != null) return _database!;
 
     _database = await _initDB('notes.db');
-    return _database;
+    return _database!;
   }
 
   Future<Database> _initDB(String filePath) async {

@@ -4,10 +4,10 @@ import 'package:notes/services/notes_database.dart';
 import '../widgets/note_form_Widget.dart';
 
 class AddEditNotePage extends StatefulWidget {
-  final Note note;
+  final Note? note;
 
   const AddEditNotePage({
-    Key key,
+    Key? key,
     this.note,
   }) : super(key: key);
   @override
@@ -16,10 +16,10 @@ class AddEditNotePage extends StatefulWidget {
 
 class _AddEditNotePageState extends State<AddEditNotePage> {
   final _formKey = GlobalKey<FormState>();
-  bool isImportant;
-  int number;
-  String title;
-  String description;
+  bool? isImportant;
+  late int number;
+  late String title;
+  late String description;
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
         body: Form(
           key: _formKey,
           child: NoteFormWidget(
-            isImportant: isImportant,
+            isImportant: isImportant??false,
             number: number,
             title: title,
             description: description,
@@ -62,21 +62,21 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
-          primary: isFormValid ? null : Colors.grey.shade700,
-        ),
+      child: TextButton(
+        // style: ElevatedButton.styleFrom(
+        //   foregroundColor: Colors.white,
+        //   backgroundColor: isFormValid ? null : Colors.grey.shade700,
+        // ),
         onPressed: addOrUpdateNote,
-        child: Text('Save'),
+        child: Text('Save', style: TextStyle(color: isFormValid ? Colors.white : Colors.grey.shade400),),
       ),
     );
   }
 
   void addOrUpdateNote() async {
-    final isValid = _formKey.currentState.validate();
+    final isValid = _formKey.currentState?.validate();
 
-    if (isValid) {
+    if (isValid != null && isValid == true) {
       final isUpdating = widget.note != null;
 
       if (isUpdating) {
@@ -90,21 +90,21 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
   }
 
   Future updateNote() async {
-    final note = widget.note.copy(
-      isImportant: isImportant ? 1 : 0,
+    final note = widget.note?.copy(
+      isImportant: isImportant!=null && isImportant! ? 1 : 0,
       number: number,
       title: title,
       description: description,
       createdTime: DateTime.now(),
     );
 
-    await NotesDatabase.instance.update(note);
+    await NotesDatabase.instance.update(note!);
   }
 
   Future addNote() async {
     final note = Note(
       title: title,
-      isImportant: isImportant ? 1 : 0,
+      isImportant: isImportant!=null && isImportant! ? 1 : 0,
       number: number,
       description: description,
       createdTime: DateTime.now(),

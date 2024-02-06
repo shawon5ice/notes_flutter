@@ -14,8 +14,8 @@ class NotesPage extends StatefulWidget {
 }
 
 class _NotesPageState extends State<NotesPage> {
-  List<Note> notes;
-  List<Note> importantNotes;
+  late List<Note> notes;
+  late List<Note> importantNotes;
   bool isLoading = false;
   bool isGrid = true;
 
@@ -109,7 +109,7 @@ class _NotesPageState extends State<NotesPage> {
             return GestureDetector(
               onTap: () async {
                 await Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => NoteDetailPage(noteId: note.id),
+                  builder: (context) => NoteDetailPage(noteId: note.id??-99),
                 ));
                 refreshNotes();
               },
@@ -125,7 +125,7 @@ class _NotesPageState extends State<NotesPage> {
               onTap: () async {
                 await Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => NoteDetailPage(noteId: note.id),
+                    builder: (context) => NoteDetailPage(noteId: note.id??-99),
                   ),
                 );
                 refreshNotes();

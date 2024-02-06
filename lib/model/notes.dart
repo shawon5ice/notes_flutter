@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 final String tableNotes = 'notes';
 
 class NoteFields {
@@ -15,15 +17,15 @@ class NoteFields {
 }
 
 class Note {
-  final int id;
-  final int isImportant;
-  final int number;
-  final String title;
-  final String description;
-  final DateTime createdTime;
+  int? id;
+  final int? isImportant;
+  final int? number;
+  final String? title;
+  final String? description;
+  final DateTime? createdTime;
 
-  const Note({
-    this.id,
+  Note({
+     this.id,
      this.isImportant,
      this.number,
      this.title,
@@ -32,12 +34,12 @@ class Note {
   });
 
   Note copy({
-    int id,
-    int isImportant,
-    int number,
-    String title,
-    String description,
-    DateTime createdTime,
+    int? id,
+    int? isImportant,
+    int? number,
+    String? title,
+    String? description,
+    DateTime? createdTime,
   }) =>
       Note(
         id: id ?? this.id,
@@ -48,9 +50,9 @@ class Note {
         createdTime: createdTime ?? this.createdTime,
       );
 
-  static Note fromJson(Map<String, Object> json) => Note(
+  static Note fromJson(Map<String, Object?> json) => Note(
     id: json[NoteFields.id] as int,
-    isImportant: json[NoteFields.isImportant],
+    isImportant: int.parse(json[NoteFields.isImportant].toString()),
     number: json[NoteFields.number] as int,
     title: json[NoteFields.title] as String,
     description: json[NoteFields.description] as String,
@@ -58,11 +60,11 @@ class Note {
   );
 
   Map<String, Object> toJson() => {
-    NoteFields.id: id,
-    NoteFields.title: title,
-    NoteFields.isImportant: isImportant,
-    NoteFields.number: number,
-    NoteFields.description: description,
-    NoteFields.time: createdTime.toIso8601String(),
+    NoteFields.id: id?? int.parse(DateTime.now().toIso8601String().split('.').last),
+    NoteFields.title: title.toString(),
+    NoteFields.isImportant: isImportant??0,
+    NoteFields.number: number??0,
+    NoteFields.description: description??'--',
+    NoteFields.time: createdTime != null? createdTime!.toIso8601String(): DateTime.now().toIso8601String(),
   };
 }

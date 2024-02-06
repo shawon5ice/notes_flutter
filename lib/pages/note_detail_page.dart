@@ -7,8 +7,8 @@ class NoteDetailPage extends StatefulWidget {
   final int noteId;
 
   const NoteDetailPage({
-    Key key,
-    this.noteId,
+    Key? key,
+    required this.noteId,
   }) : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class NoteDetailPage extends StatefulWidget {
 }
 
 class _NoteDetailPageState extends State<NoteDetailPage> {
-  Note note;
+  late Note note;
   bool isLoading = false;
 
   @override
@@ -59,7 +59,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
           GestureDetector(
             onTap: edit,
             child: Text(
-              note.title,
+              note.title.toString(),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -69,12 +69,12 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
           ),
           SizedBox(height: 8),
           Text(
-              DateFormat.yMMMd().format(note.createdTime),
+              DateFormat.yMMMd().format(note.createdTime?? DateTime.now()),
               style: TextStyle(color: Colors.white38),
             ),
           SizedBox(height: 8),
           Text(
-            note.description,
+            note.description.toString(),
             style: TextStyle(color: Colors.white70, fontSize: 18),
           )
         ],

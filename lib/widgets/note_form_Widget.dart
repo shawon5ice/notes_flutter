@@ -11,15 +11,15 @@ class NoteFormWidget extends StatelessWidget {
   final ValueChanged<String> onChangedDescription;
 
   const NoteFormWidget({
-    Key key,
+    Key? key,
     this.isImportant = false,
     this.number = 0,
     this.title = '',
     this.description = '',
-    this.onChangedImportant,
-    this.onChangedNumber,
-    this.onChangedTitle,
-    this.onChangedDescription,
+    required this.onChangedImportant,
+    required this.onChangedNumber,
+    required this.onChangedTitle,
+    required this.onChangedDescription,
   }) : super(key: key);
 
   @override

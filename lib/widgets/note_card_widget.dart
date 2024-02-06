@@ -16,9 +16,9 @@ final _lightColors = [
 
 class NoteCardWidget extends StatelessWidget {
   NoteCardWidget({
-    Key key,
-    this.note,
-    this.index,
+    Key? key,
+    required this.note,
+    required this.index,
   }) : super(key: key);
 
   final Note note;
@@ -28,13 +28,13 @@ class NoteCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Pick colors from the accent colors based on index
     final color = _lightColors[index % _lightColors.length];
-    final time = DateFormat.yMMMd().format(note.createdTime);
+    final time = DateFormat.yMMMd().format(note.createdTime??DateTime.now());
     // final hour = note.createdTime.hour;
-    final minute = note.createdTime.minute;
-    final charCount = note.description.length + note.title.length;
+    final minute = note.createdTime?.minute;
+    final charCount = note.description!.length + note.title!.length;
 
     var m;
-    if (minute < 10) {
+    if (minute! < 10) {
       m = '0' + minute.toString();
     } else {
       m = minute.toString();
@@ -83,7 +83,7 @@ class NoteCardWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  note.title,
+                  note.title??'',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -91,7 +91,7 @@ class NoteCardWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  note.description,
+                  note.description??'',
                   style: TextStyle(
                     color: Colors.grey.shade800,
                     fontSize: 16,
@@ -100,16 +100,16 @@ class NoteCardWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
+                SizedBox(height:10),
               ],
             ),
-            // SizedBox(height:10),
             Positioned(
               child: Row(children: [
                 Icon(
                   Icons.timer,
                   size: 16,
                 ),
-                Text('${note.createdTime.hour}:$m')
+                Text('${note.createdTime?.hour}:$m')
               ]),
               bottom: 0,
               right: 0,

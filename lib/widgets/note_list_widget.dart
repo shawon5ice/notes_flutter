@@ -16,9 +16,9 @@ final _lightColors = [
 
 class NoteListCardWidget extends StatelessWidget {
   NoteListCardWidget({
-    Key key,
-    this.note,
-    this.index,
+    Key? key,
+    required this.note,
+    required this.index,
   }) : super(key: key);
 
   final Note note;
@@ -28,13 +28,13 @@ class NoteListCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Pick colors from the accent colors based on index
     final color = _lightColors[index % _lightColors.length];
-    final time = DateFormat.yMMMd().format(note.createdTime);
+    final time = DateFormat.yMMMd().format(note.createdTime??DateTime.now());
     // final hour = note.createdTime.hour;
-    final minute = note.createdTime.minute;
+    final minute = note.createdTime?.minute;
     // final charCount = note.description.length + note.title.length;
 
     var m;
-    if (minute < 10) {
+    if (minute! < 10) {
       m = '0' + minute.toString();
     } else {
       m = minute.toString();
@@ -81,7 +81,7 @@ class NoteListCardWidget extends StatelessWidget {
               children: [
                 SizedBox(height: 4),
                 Text(
-                  note.title,
+                  note.title??'',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: TextStyle(
@@ -91,7 +91,7 @@ class NoteListCardWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  note.description,
+                  note.description??'',
                   style: TextStyle(
                     color: Colors.grey.shade800,
                     fontSize: 16,
@@ -109,7 +109,7 @@ class NoteListCardWidget extends StatelessWidget {
                   time,
                   style: TextStyle(color: Colors.grey.shade700),
                 ),
-                Text(' @ ${note.createdTime.hour}:$m')
+                Text(' @ ${note.createdTime?.hour}:$m')
               ]),
               bottom: 0,
               right: 0,
